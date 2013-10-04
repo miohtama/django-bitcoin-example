@@ -157,6 +157,9 @@ LOGGING = {
     }
 }
 
+# Don't try to do asynchronous transaction processing
+CELERY_ALWAYS_EAGER = True
+
 # Disable some nagging
 import warnings
 warnings.filterwarnings('ignore', r"DateTimeField received a naive datetime", RuntimeWarning, r'django\.db\.models\.fields')
