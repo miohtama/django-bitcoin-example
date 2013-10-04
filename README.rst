@@ -264,7 +264,7 @@ We fire up the Python shell again and send the bitcoins to the target address::
     master_wallet.send_to_address("1Bk1Gwo6KVu2a85YkqHAPtdxmS8xHejDUB", Decimal("0.0505"), "Bought Michel Telo MP3")
 
 Note that for every outgoing transaction there is a bitcoin network fee which is
-configured to be 0.0005 BTC in ``django_bitcoind``by default.
+configured to be 0.0005 BTC in ``django_bitcoind`` by default.
 So the total amount to be send is the checkout price + network fee.
 Higher the paid network fee, faster the transaction is processed by bitcoin network.
 
@@ -276,7 +276,8 @@ Checking outgoing and past transactions
 
 We can check the outgoing transactions from our wallet::
 
-     for t in WalletTransaction.objects.filter(from_wallet=master_wallet): print t, t.to_bitcoinaddress
+     for t in WalletTransaction.objects.filter(from_wallet=master_wallet):
+        print t, t.to_bitcoinaddress
 
 .. image:: https://raw.github.com/miohtama/django-bitcoin-example/master/images/history.png
     :width: 800
@@ -284,7 +285,7 @@ We can check the outgoing transactions from our wallet::
 If you enter the receiving address to `blockchain.info <blockchain.info>`_
 you can see its transaction statuses in the bitcoin network.
 
-.. image:: https://raw.github.com/miohtama/django-bitcoin-example/master/images/blockchains.png
+.. image:: https://raw.github.com/miohtama/django-bitcoin-example/master/images/blockchain.png
     :width: 800
 
 And that's it. Nossa!
