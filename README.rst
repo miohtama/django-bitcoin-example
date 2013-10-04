@@ -10,10 +10,17 @@ This all is done interactively from the command line and Python prompt.
 This tutorial was written on OSX. It should work on Linux unmodified.
 Windows: don't know and don't care.
 
+.. note ::
+
+    LocalBitcoins is hiring open source freelancers to working on various
+    open source projects we are using. If you have decent Python and
+    UNIX experience please contact to mikko@localbitcoins.com,
+    CV included.
+
 .. contents::
 
 -----------------------------------------------
-Why to accept bitcoin in your online service
+Why accept bitcoin in your online service
 -----------------------------------------------
 
 * Bitcoin is money with API: very easy to handle programmatically. You can do it even from UNIX command line.
@@ -24,9 +31,13 @@ Why to accept bitcoin in your online service
 
 * It is free from chargeback fraud. The system is based on mathematics instead of trust.
 
+* Very low fees (0.01% compared to 2-5% by credit card, PayPal)
+
 -----------------------------------------------
 Prerequisitements
 -----------------------------------------------
+
+In order to understand this tutorial, you need to master
 
 * Python 2.7
 
@@ -38,7 +49,7 @@ Prerequisitements
 
 Intermediate Django experience needed: how to configure Django project, MySQL, models, South migrations, using interactive Python shell.
 
-How to consume piles of open source code from Github.
+You need to know how to consume piles of open source code from Github.
 
 -----------------------------------------------
 Installation
@@ -48,8 +59,8 @@ Setup a configure ``memcached`` first.
 
 Installation is (`virtualenv based <http://opensourcehacker.com/2012/09/16/recommended-way-for-sudo-free-installation-of-python-software-with-virtualenv/>`_)::
 
-    git clone xxx
-    cd xxx
+    git clone git@github.com:miohtama/django-bitcoin-example.git
+    cd git@github.com:miohtama/django-bitcoin-example.git
     virtualenv venv   # Create virtualenv folder caller venv
     . venv/bin/activate  # Active virtualenv
 
@@ -61,9 +72,10 @@ Install Python dependencies using *pip*::
 Tutorial walkthrough
 -----------------------------------------------
 
-`django-bitcoin <https://github.com/kangasbros/django-bitcoin>`_ creates a so caleld web wallet in your Django application.
+`django-bitcoin <https://github.com/kangasbros/django-bitcoin>`_ creates a so called
+bitcoin web wallet in your Django project.
 
-* You need to have a `bitcoind <http://bitcoin.org/en/download>`_ installed on your desktop / server
+* You need to have a `bitcoind <http://bitcoin.org/en/download>`_ installed on your desktop / server.
 
 * ``django-bitcoin`` reads transactions from ``bitcoind`` and duplicates them as Django models for easy handling
 
@@ -76,13 +88,20 @@ Tutorial walkthrough
 Configuring bitcoind
 ========================
 
+Install `bitcoind <https://en.bitcoin.it/wiki/Bitcoind>`_.
+
+Note that the initial installation takes hefty 10-20 GB disk space for the block chain data.
+Blockchain contains all transaction history of bitcoin ever. Downloading this
+data while take a while.
+
 * *django-bitcoin* communites with bitcoind over JSON-RPC protocol. You set the bitcoind address in ``settings.py``
 
 * ``bitcoind`` transaction handling is done as polling, using Django management commands
 
 Configure your bitcoind to accept connection with username and password.
 
-Create file ``example/localsettings.py` and let's put in confidential settings::
+Create file ``example/localsettings.py` and let's put there in confidential settings
+(not stored on Github)::
 
     BITCOIND_CONNECTION_STRING = "http://miguel:passwor@example.com:8332"
 
@@ -109,7 +128,8 @@ Let's open the development web server and see that the Django admin is up with `
 
     python manage.py runserver_plus
 
-Visit ``http://localhost:8000/admin`` to see the interface:
+Visit ``http://localhost:8000/admin`` to see the Django admin interface having addresses,
+wallets and such:
 
 .. image:: https://raw.github.com/miohtama/django-bitcoin-example/master/images/admin.png
     :width: 800
@@ -117,10 +137,10 @@ Visit ``http://localhost:8000/admin`` to see the interface:
 Creating a wallet
 ====================
 
-A wallet stores bitcoin value (actual bitcoins are stored in different bitcoin addresses managed by bitcoind).
-A wallet has sending and receiving bitcoin addresses.
-
-We need to first create a wallet.
+A wallet, as Django model in ``django_bitcoin``,
+is a combination of receiving and sending bitcoin addresses and
+stores the bitcoin value associated with these addresses.
+A wallet can have infinite number of sending and receiving bitcoin addresses.
 
 Let's start interactive IPython prompt::
 
@@ -136,12 +156,12 @@ Then we need to have an receiving bitcoin address where this wallet can receive 
     recv_address = master_wallet.receiving_address(fresh_addr=False)
     print recv_address
 
-Write down the address you got.
+Write down the bitcoin address you got.
 
 .. image:: https://raw.github.com/miohtama/django-bitcoin-example/master/images/wallet.png
     :width: 800
 
-Get some test bitcoins
+Purchase some test bitcoins
 =======================================
 
 Go to `LocalBitcoins.com and buy some bitcoins <https://localbitcoins.com/?ch=1af>`_.
