@@ -118,7 +118,7 @@ Initializing database
 ==========================
 
 ``django-bitcoin`` uses South for its schema management.
-Create a database::
+Create a database (sqlite ``test.db`` file by default)::
 
     python manage.py syncdb
     python manage.pt migrate django_bitcoin
@@ -139,7 +139,7 @@ wallets and such:
 Creating a wallet
 ====================
 
-A wallet, as Django model in ``django_bitcoin``,
+A wallet, ``django_bitcoin.models.Wallet``,
 is a combination of receiving and sending bitcoin addresses and
 stores the bitcoin value associated with these addresses.
 A wallet can have infinite number of sending and receiving bitcoin addresses.
