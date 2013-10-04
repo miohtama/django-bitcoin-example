@@ -165,11 +165,12 @@ Purchase some test bitcoins
 =======================================
 
 Go to `LocalBitcoins.com and buy some bitcoins <https://localbitcoins.com/?ch=1af>`_.
-LocalBitcoins.com is a person-to-person bitcoin exchange.
-It is the definitely easiest and fastest way to obtain your first bitcoins.
-This LocalBitcoins as eBay of bitcoins.
+LocalBitcoins.com is a person-to-person bitcoin exchange where you are not buying
+bitcoins from the organization, but from another user.
+This is definitely the easiest and fastest way to obtain your first bitcoins.
+Think LocalBitcoins as eBay of bitcoins.
 
-LocalBitcons.com provides diffferent online payment methods.
+LocalBitcoins.com provides diffferent online payment methods.
 The recommended methods are:
 
 * Cash deposit (inverse ATM popular in US) - no id needed
