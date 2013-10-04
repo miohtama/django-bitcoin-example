@@ -199,13 +199,13 @@ Now we are going to send the bitcoins there from LocalBitcoins:
 
 When you hit the *Send* on LocalBitcoins.com, the site submits the transaction to
 the bitcoin network. Bitcoin network consists of nodes which will confirm your transaction.
-After the certain transaction threshold is exceeded you can assume the transaction
+After the certain transaction confirmation threshold is exceeded you can assume the transaction
 was safe and not double spent attempt. Usually this confirmation threshold is six
 confirmations, but you can set it lower if you want to have faster customer
-experience. Usually it takes 5-30 minutes to process a transaction
+experience. It takes 5-30 minutes to process a transaction
 with six confirmations.
 
-Now, our own example application polls ``bitcoind`` which listens
+Now, in our own example application polls ``bitcoind`` which listens
 to bitcoin network. `bitcoind exposes a bunch of commands
 over JSON-RPC protocol <https://en.bitcoin.it/wiki/API_reference_%28JSON-RPC%29>`_.
 You can call these commands even from the UNIX command line.
@@ -231,9 +231,10 @@ Checking the balance
 ===========================
 
 ``CheckTransactions`` fires the Django signal handlers
-notifying your system for incoming transactions.
+notifying the Django project for incoming transactions.
 For the simplicity, we do not use Django signalling in this example.
-Instead, we manually run this command after 20 minutes and see
+Instead, we manually run ``CheckTransactions``
+and after 20 minutes and see
 that the bitcoins have been received in our wallet::
 
     python manage.py shell_plus
@@ -265,8 +266,9 @@ We fire up the Python shell again and send the bitcoins to the target address::
     master_wallet = Wallet.objects.get(label="master_wallet")
     master_wallet.send_to_address("1Bk1Gwo6KVu2a85YkqHAPtdxmS8xHejDUB", Decimal("0.0505"), "Bought Michel Telo MP3")
 
-Note that for every outgoing transaction there is a bitcoin network fee which is
-configured to be 0.0005 BTC in ``django_bitcoind`` by default.
+Note that for every outgoing transaction there is a bitcoin network fee
+to compensate the bitcoin miners for confirming your transaction.
+The network fee is configured to be 0.0005 BTC in ``django_bitcoind`` by default.
 So the total amount to be send is the checkout price + network fee.
 Higher the paid network fee, faster the transaction is processed by bitcoin network.
 
