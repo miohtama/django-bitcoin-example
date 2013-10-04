@@ -1,11 +1,12 @@
+# some very random collection of ignores
+# matching my workflow
+venv/
 build/
 dist/
 *.pyc
 *.egg
 dump.sql
 *.egg-info
-venv/
-bitcoinxcash/local_settings*
 *.orig
 cached-static/*
 .DS_Store
@@ -15,9 +16,9 @@ lib/*
 *.csv
 *.sql
 *.bzip2
-celerybeat-schedule
 *.mo
-user-uploads
 *.tmp
 .codeintel
+user-uploads
 media
+example/settings.py
