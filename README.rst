@@ -6,6 +6,8 @@ This proejct shows how to use `django-bitcoin to receive and send money in your 
 It shows how to create a web wallet, accept incoming bitcoins and then spend them.
 This all is done interactively from a command line prompt.
 
+.. contents::
+
 Why to accept bitcoin in your online service
 -----------------------------------------------
 
@@ -99,7 +101,7 @@ Let's open the development web server and see that the Django admin is up with `
 
 Visit ``http://localhost:8000/admin`` to see the interface:
 
-.. img:: https://raw.github.com/miohtama/django-bitcoin-example/master/images/admin.png
+.. image:: https://raw.github.com/miohtama/django-bitcoin-example/master/images/admin.png
     :width: 800
 
 Creating a wallet
@@ -124,7 +126,7 @@ Then we need to have an receiving bitcoin address where this wallet can receive 
     recv_address = master_wallet.receiving_address(fresh_addr=False)
     print recv_address
 
-.. img:: https://raw.github.com/miohtama/django-bitcoin-example/master/images/wallet.png
+.. image:: https://raw.github.com/miohtama/django-bitcoin-example/master/images/wallet.png
     :width: 800
 
 
