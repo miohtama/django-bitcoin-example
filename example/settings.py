@@ -157,4 +157,9 @@ LOGGING = {
     }
 }
 
-import localsettings
+# Disable some nagging
+import warnings
+warnings.filterwarnings('ignore', r"DateTimeField received a naive datetime", RuntimeWarning, r'django\.db\.models\.fields')
+
+
+from example.localsettings import *

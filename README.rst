@@ -22,13 +22,15 @@ Prerequisitements
 
 * Python 2.7
 
-* MySQL
+* MySQL recommended and well tested, example runs on SQLite
 
 * memcached
 
 * `bitcoind <http://bitcoin.org/en/download>`_
 
 Intermediate Django experience needed: how to configure Django project, MySQL, models, South migrations, using interactive Python shell.
+
+How to consume piles of open source code from Github.
 
 Installation
 ----------------
@@ -54,6 +56,10 @@ Tutorial
 * ``django-bitcoin`` reads transactions from ``bitcoind`` and duplicates them as Django models for easy handling
 
 * ``django-bitcoin`` can send bitcoins from the system
+
+* Bitcoin addresses are created and used on demand. The sending and receiving addresses do not have
+  relationship between them. When you receive bitcoins to your system they do not leave out from
+  the same address. This is who most bitcoin web wallets behave.
 
 Configuring bitcoind
 ========================
@@ -93,7 +99,8 @@ Let's open the development web server and see that the Django admin is up with `
 
 Visit ``http://localhost:8000/admin`` to see the interface:
 
-
+.. img:: https://raw.github.com/miohtama/django-bitcoin-example/master/images/admin.png
+    :width: 800
 
 Creating a wallet
 ====================
@@ -103,7 +110,23 @@ A wallet has sending and receiving bitcoin addresses.
 
 We need to first create a wallet.
 
-Let's start interactive IPython prompt:
+Let's start interactive IPython prompt::
+
+    python manage.py shell_plus
+
+Then we create a wallet with an label. Usually if the application has only one wallet (not per user wallets)
+you call this wallet instance to *master wallet*::
+
+    master_wallet, created = Wallet.objects.get_or_create(label="master_wallet")
+
+Then we need to have an receiving bitcoin address where this wallet can receive bitcoins::
+
+    recv_address = master_wallet.receiving_address(fresh_addr=False)
+    print recv_address
+
+.. img:: https://raw.github.com/miohtama/django-bitcoin-example/master/images/wallet.png
+    :width: 800
+
 
 Get some bitcoins
 =======================================
