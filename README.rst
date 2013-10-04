@@ -19,6 +19,8 @@ Windows: don't know and don't care.
 
 .. contents::
 
+All code is MIT licensed.
+
 -----------------------------------------------
 Why accept bitcoin in your online service
 -----------------------------------------------
@@ -37,19 +39,19 @@ Why accept bitcoin in your online service
 Prerequisitements
 -----------------------------------------------
 
-In order to understand this tutorial, you need to master
+In order to understand this tutorial, you need to have mastered
 
 * Python 2.7
 
-* MySQL recommended and well tested, example runs on SQLite
+* `virtualenv <http://opensourcehacker.com/2012/09/16/recommended-way-for-sudo-free-installation-of-python-software-with-virtualenv>`_
 
 * memcached
 
 * `bitcoind <http://bitcoin.org/en/download>`_
 
-Intermediate Django experience needed: how to configure Django project, MySQL, models, South migrations, using interactive Python shell.
+* Django basics: how to configure Django project, MySQL, models, South migrations, using interactive Python shell.
 
-You need to know how to consume piles of open source code from Github.
+* How to consume piles of open source code from Github
 
 -----------------------------------------------
 Installation
@@ -57,10 +59,10 @@ Installation
 
 Setup a configure ``memcached`` first.
 
-Installation is (`virtualenv based <http://opensourcehacker.com/2012/09/16/recommended-way-for-sudo-free-installation-of-python-software-with-virtualenv/>`_)::
+Installation (`virtualenv based <http://opensourcehacker.com/2012/09/16/recommended-way-for-sudo-free-installation-of-python-software-with-virtualenv/>`_)::
 
     git clone git@github.com:miohtama/django-bitcoin-example.git
-    cd git@github.com:miohtama/django-bitcoin-example.git
+    cd django-bitcoin-example
     virtualenv venv   # Create virtualenv folder caller venv
     . venv/bin/activate  # Active virtualenv
 
