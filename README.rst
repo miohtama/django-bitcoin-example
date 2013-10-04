@@ -48,7 +48,9 @@ Configuring bitcoind
 
 * ``bitcoind`` transaction handling is done as polling, using Django management commands
 
-Edit settings.py and let's put in::
+Configure your bitcoind to accept connection with username and password.
+
+Create file ``example/localsettings.py` and let's put in confidential settings::
 
     BITCOIND_CONNECTION_STRING = "http://miguel:passwor@example.com:8332"
 
@@ -58,7 +60,6 @@ Edit settings.py and let's put in::
 
     # Use Django signals to tell the system when new money has arrived to your wallets
     BITCOIN_TRANSACTION_SIGNALING = True
-
 
 Let's start interactive IPython prompt:
 

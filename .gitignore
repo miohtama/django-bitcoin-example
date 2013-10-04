@@ -21,4 +21,4 @@ lib/*
 .codeintel
 user-uploads
 media
-example/settings.py
+example/localsettings.py
