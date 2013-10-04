@@ -139,7 +139,7 @@ wallets and such:
 Creating a wallet
 ====================
 
-A wallet, ``django_bitcoin.models.Wallet``,
+A wallet, ``django_bitcoin.models.Walletx``,
 is a combination of receiving and sending bitcoin addresses and
 stores the bitcoin value associated with these addresses.
 A wallet can have infinite number of sending and receiving bitcoin addresses.
@@ -181,7 +181,7 @@ The recommended methods are:
 
 If you are living a big city you can also try cash trade.
 
-`You can buy small amounts of bitcoins from me <https://localbitcoins.com/p/opensourcehacker?ch=1af>`.
+`You can buy small amounts of bitcoins from me <https://localbitcoins.com/p/opensourcehacker?ch=1af>`_.
 If you want to purchase bitcoins with PayPal agree it with beforehand,
 as PayPal bitcoin sell advertisements are hidden by default to avoid frauduleint buy requests.
 
