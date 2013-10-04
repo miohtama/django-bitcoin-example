@@ -1,0 +1,18 @@
+DistributedLock==1.2
+Django==1.4.5
+MySQL-python==1.2.4
+Pillow==2.1.0
+South==0.8.2
+Werkzeug==0.9.4
+amqp==1.0.13
+anyjson==0.3.3
+billiard==2.7.3.32
+celery==3.0.23
+-e git+git@github.com:miohtama/django-bitcoin.git@b8a931b3c5a661428eb5b9939a6560f692964e89#egg=django_bitcoin-dev
+django-extensions==1.2.0
+ipdb==0.7
+ipython==1.0.0
+python-memcached==1.53
+readline==6.2.4.1
+six==1.4.1
+wsgiref==0.1.2

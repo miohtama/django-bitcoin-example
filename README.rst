@@ -3,6 +3,20 @@ django-bitcoin example project
 
 This proejct shows how to use `django-bitcoin to receive and send money in your Python + Django application <https://github.com/kangasbros/django-bitcoin>`_.
 
+It shows how to create a web wallet, accept incoming bitcoins and then spend them.
+This all is done interactively from a command line prompt.
+
+Why to accept bitcoin in your online service
+-----------------------------------------------
+
+* Bitcoin is money with API: very easy to handle programmatically. You can do it even from UNIX command line.
+
+* No upfront contracts or paperwork needed.
+
+* `Bitcoin market liquity has risen to a level, so that it is easy for everyone to obtain bitcoins from LocalBitcoins.com <https://localbitcoins.com>`_. You can also convert bitcoins easily back to fiat currency, when you need to pay taxes.
+
+* It is free from chargeback fraud. The system is based on mathematics instead of trust.
+
 Prerequisitements
 -------------------
 
@@ -61,8 +75,39 @@ Create file ``example/localsettings.py` and let's put in confidential settings::
     # Use Django signals to tell the system when new money has arrived to your wallets
     BITCOIN_TRANSACTION_SIGNALING = True
 
+Initializing database
+==========================
+
+``django-bitcoin`` uses South for its schema management.
+Create a database::
+
+    python manage.py syncdb
+    python manage.pt migrate django_bitcoin
+
+Do a test run
+=================
+
+Let's open the development web server and see that the Django admin is up with ``django-bitcoin``::
+
+    python manage.py runserver_plus
+
+Visit ``http://localhost:8000/admin`` to see the interface:
+
+
+
+Creating a wallet
+====================
+
+A wallet stores bitcoin value (actual bitcoins are stored in different bitcoin addresses managed by bitcoind).
+A wallet has sending and receiving bitcoin addresses.
+
+We need to first create a wallet.
+
 Let's start interactive IPython prompt:
 
+Get some bitcoins
+=======================================
 
-
+Accepting incoming transaction
+====================================
 
